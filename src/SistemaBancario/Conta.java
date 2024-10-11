@@ -3,14 +3,73 @@ package SistemaBancario;
 import SistemaBancario.Exceptions.*;
 
 import java.util.HashMap;
+import java.util.UUID;
 
 public class Conta {
 
+    private UUID id;
     private int numeroConta;
     private String titular;
     private double saldo;
     private double limite;
 
+
+    public Conta(int numeroConta,String titular, double saldo, double limite) {
+        this.id = UUID.randomUUID();
+        this.numeroConta = numeroConta;
+        this.titular = titular;
+        this.saldo = saldo;
+        this.limite = limite;
+    }
+
+    public Conta(String id, int number, String titular, double saldo, double limite) {
+        this.id = UUID.fromString(id);
+        this.numeroConta = number;
+        this.titular = titular;
+        this.saldo = saldo;
+        this.limite = limite;
+    }
+
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public int getNumeroConta() {
+        return numeroConta;
+    }
+
+    public void setNumeroConta(int numeroConta) {
+        this.numeroConta = numeroConta;
+    }
+
+    public String getTitular() {
+        return titular;
+    }
+
+    public void setTitular(String titular) {
+        this.titular = titular;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public double getLimite() {
+        return limite;
+    }
+
+    public void setLimite(double limite) {
+        this.limite = limite;
+    }
 
     public void saque(double valorDeSaque) throws ValorInvalidoException, LimiteExcedidoException, SaldoInsuficienteException {
 
@@ -22,26 +81,17 @@ public class Conta {
     }
 
     public void deposito(double valorDeDeposito) throws ValorInvalidoException, LimiteExcedidoException, SaldoInsuficienteException {
-
         validaValor(valorDeDeposito);
-
         this.saldo += valorDeDeposito;
     }
 
     public void transferencia(double valorDeTransferencia, Conta contaATransferir) throws ValorInvalidoException, LimiteExcedidoException, SaldoInsuficienteException, ContaInexistenteException, ContaPropriaException {
-
         validaConta(contaATransferir);
-
         saque(valorDeTransferencia);
         contaATransferir.deposito(valorDeTransferencia);
     }
 
-    public Conta(int numeroConta, String titular, double saldo, double limite) {
-        this.numeroConta = numeroConta;
-        this.titular = titular;
-        this.saldo = saldo;
-        this.limite = limite;
-    }
+
 
     private void validaValor(double valor) throws ValorInvalidoException {
         if (valor <= 0) {
@@ -70,34 +120,12 @@ public class Conta {
         }
     }
 
-    public String getTitular() {
-        return titular;
-    }
-
-    public void setTitular(String titular) {
-        this.titular = titular;
-    }
-
-    public double getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
-
-    public double getLimite() {
-        return limite;
-    }
-
-    public void setLimite(double limite) {
-        this.limite = limite;
-    }
 
     @Override
     public String toString() {
         return "Conta{" +
-                "numeroConta=" + numeroConta +
+                "id=" + id +
+                ", numeroConta=" + numeroConta +
                 ", titular='" + titular + '\'' +
                 ", saldo=" + saldo +
                 ", limite=" + limite +
