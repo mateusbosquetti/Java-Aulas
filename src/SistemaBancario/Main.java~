@@ -34,8 +34,8 @@ public class Main {
     }
 
     private static void interacaoDELETE() {
-        System.out.println("Deletar Pelo número");
-        System.out.println("Digite o número que você quer deletar");
+        System.out.println("Deletar Pelo numero");
+        System.out.println("Digite o núemro que você quer deletar");
         int numero = sc.nextInt();
 
         delete(numero);
