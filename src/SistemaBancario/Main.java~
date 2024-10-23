@@ -47,7 +47,7 @@ public class Main {
         } while (true);
          */
     }
-
+    
     private static Cliente criarCliente() {
         System.out.print("CPF:");
         String cpf = sc.nextLine();
