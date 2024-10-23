@@ -6,12 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="00ea1b64-0f95-4b50-be25-0338c6f58175" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SistemaBancario/Conta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SistemaBancario/Conta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SistemaBancario/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SistemaBancario/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -21,6 +29,9 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2nGUVePuZlBUYq1amqQ8NxI6dHe" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -70,7 +81,7 @@
       <workItem from="1729531281659" duration="124000" />
       <workItem from="1729532983916" duration="6000" />
       <workItem from="1729703284285" duration="250000" />
-      <workItem from="1729704326950" duration="1104000" />
+      <workItem from="1729704326950" duration="7188000" />
     </task>
     <servers />
   </component>

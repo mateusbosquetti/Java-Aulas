@@ -9,12 +9,13 @@ public class Conta {
 
     private UUID id;
     private int numeroConta;
-    private String titular;
+    private Cliente titular;
     private double saldo;
     private double limite;
 
 
-    public Conta(int numeroConta,String titular, double saldo, double limite) {
+    //ADD Usuario
+    public Conta(int numeroConta, Cliente titular, double saldo, double limite) {
         this.id = UUID.randomUUID();
         this.numeroConta = numeroConta;
         this.titular = titular;
@@ -22,7 +23,8 @@ public class Conta {
         this.limite = limite;
     }
 
-    public Conta(String id, int number, String titular, double saldo, double limite) {
+    //Listar Usuario
+    public Conta(String id, int number, Cliente titular, double saldo, double limite) {
         this.id = UUID.fromString(id);
         this.numeroConta = number;
         this.titular = titular;
@@ -47,11 +49,11 @@ public class Conta {
         this.numeroConta = numeroConta;
     }
 
-    public String getTitular() {
+    public Cliente getTitular() {
         return titular;
     }
 
-    public void setTitular(String titular) {
+    public void setTitular(Cliente titular) {
         this.titular = titular;
     }
 
