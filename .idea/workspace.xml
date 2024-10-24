@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00ea1b64-0f95-4b50-be25-0338c6f58175" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SistemaBancario/CRUDCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SistemaBancario/CRUDCliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SistemaBancario/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SistemaBancario/Cliente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SistemaBancario/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SistemaBancario/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +37,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
+    "Application.Unnamed.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -92,7 +90,7 @@
       <workItem from="1729532983916" duration="6000" />
       <workItem from="1729703284285" duration="250000" />
       <workItem from="1729704326950" duration="8064000" />
-      <workItem from="1729726341465" duration="3846000" />
+      <workItem from="1729726341465" duration="4190000" />
     </task>
     <servers />
   </component>

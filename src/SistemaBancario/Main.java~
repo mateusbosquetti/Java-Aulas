@@ -145,7 +145,7 @@ public class Main {
     */
 
 
-    private static void interacaoAddConta() {
+    private static Conta interacaoAddConta() {
         System.out.print("Número Conta: ");
         int numeroConta = sc.nextInt();
         sc.nextLine();
@@ -159,8 +159,7 @@ public class Main {
         System.out.print("Digite o id do cliente: ");
         Cliente titular = CRUDCliente.buscarPorId(sc.nextInt());
 
-        Conta conta = new Conta(numeroConta, titular, saldo, limite);
-        CRUDConta.salvar(conta);
+        return new Conta(numeroConta, titular, saldo, limite);
     }
 
     /*
