@@ -29,8 +29,7 @@ public class Main {
                     menuCliente();
                     break;
                 case 2:
-                    //menuConta();
-                    interacaoAddConta();
+                    menuConta();
                     //TODO Implementar
                     break;
                 case 3:
@@ -119,33 +118,29 @@ public class Main {
 
     // CONTA --------------------------------------------------
 
-     /*
 
-      private static void menuConta() {
+    private static void menuConta() {
 
         System.out.println("Bem vindo ao menu das Contas, você deseja");
         System.out.print("1 - Criar\n2 - Editar\n3 - Buscar Por Número da Conta\n4 - Buscar Tudo\n5 - Deletar \n6 - Sair\nR: ");
         int number = sc.nextInt();
 
         if (number == 1) {
-            interacaoAddConta();
+            adicionarConta();
         } else if (number == 2) {
-            interacaoUpdate();
+            //interacaoUpdate();
         } else if (number == 3) {
-            interacaoBuscar();
+            //interacaoBuscar();
         } else if (number == 4) {
-            System.out.println(buscarTudo());
+            //System.out.println(buscarTudo());
         } else if (number == 5) {
             interacaoDELETE();
         } else {
             System.exit(0);
         }
-
     }
-    */
 
-
-    private static void interacaoAddConta() {
+    private static void adicionarConta() {
         System.out.print("Número Conta: ");
         int numeroConta = sc.nextInt();
         sc.nextLine();
@@ -163,16 +158,16 @@ public class Main {
         CRUDConta.salvar(conta);
     }
 
-    /*
+
     private static void interacaoDELETE() {
         System.out.println("Deletar Pelo número");
         System.out.println("Digite o número que você quer deletar");
-        Conta conta = buscar(sc.nextInt());
+        int numeroConta = sc.nextInt();
         sc.nextLine();
 
-        delete(conta.getNumeroConta());
+        CRUDConta.delete(numeroConta);
     }
-
+    /*
     private static void interacaoBuscar() {
         System.out.println("Buscar Pelo número");
         System.out.println("Digite o número que você quer buscar");
@@ -181,8 +176,6 @@ public class Main {
         Conta conta = buscar(numero);
         System.out.println(conta);
     }
-
-
 
     public static void interacaoUpdate() {
         System.out.println("\nEDITAR CONTA");
@@ -204,5 +197,4 @@ public class Main {
         editarConta(titularEdi, saldoEdi, limiteEdi, conta.getNumeroConta());
     }
     */
-
 }
