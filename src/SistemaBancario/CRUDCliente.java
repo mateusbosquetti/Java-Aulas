@@ -1,9 +1,6 @@
 package SistemaBancario;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,33 +9,19 @@ public class CRUDCliente {
     public static void salvar(Cliente cliente) {
         try (Connection connection = ConexaoBanco.getConnection()) {
 
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO tb_cliente (nome, cpf) VALUES (?,?)");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO tb_cliente (nome, cpf) VALUES (?,?)", Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, cliente.getNome());
             ps.setString(2, cliente.getCpf());
             ps.execute();
 
-            cliente.setId(atualizarID(cliente));
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()){
+                cliente.setId(rs.getInt(1));
+            }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    private static int atualizarID(Cliente cliente) {
-
-        try (Connection connection = ConexaoBanco.getConnection()) {
-
-            PreparedStatement ps = connection.prepareStatement("SELECT id FROM tb_cliente where nome = ? and cpf = ?");
-            ps.setString(1, cliente.getNome());
-            ps.setString(2, cliente.getCpf());
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                return rs.getInt("id");
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        throw new RuntimeException("DEU RUIM BRO!");
     }
 
     public static Cliente buscarPorId(int id) {
@@ -48,7 +31,7 @@ public class CRUDCliente {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
 
-            while (rs.next()) {
+            if (rs.next()) {
                 int idCliente = rs.getInt("id");
                 String nome = rs.getString("nome");
                 String cpf = rs.getString("cpf");
@@ -67,7 +50,7 @@ public class CRUDCliente {
             ps.setString(1, nomeDoCliente);
             ResultSet rs = ps.executeQuery();
 
-            while (rs.next()) {
+            if (rs.next()) {
                 int idCliente = rs.getInt("id");
                 String nome = rs.getString("nome");
                 String cpf = rs.getString("cpf");

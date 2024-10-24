@@ -131,4 +131,13 @@ public class Conta {
                 ", limite=" + limite +
                 '}';
     }
+
+    public String toStringSemCliente() {
+        return "Conta{" +
+                "id=" + id +
+                ", numeroConta=" + numeroConta +
+                ", saldo=" + saldo +
+                ", limite=" + limite +
+                '}';
+    }
 }

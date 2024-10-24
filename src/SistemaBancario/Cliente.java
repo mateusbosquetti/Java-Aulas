@@ -62,7 +62,16 @@ public class Cliente {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
-                ", conta=" + conta +
                 '}';
     }
+
+    public String toStringComConta() {
+        return "Cliente{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", conta=" + conta.toStringSemCliente() +
+                '}';
+    }
+
 }
