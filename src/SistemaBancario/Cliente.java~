@@ -15,15 +15,12 @@ public class Cliente {
     }
 
     public Cliente(int id, String nome, String cpf) {
+        this(nome, cpf);
         this.id = id;
-        this.nome = nome;
-        this.cpf = cpf;
     }
 
     public Cliente(int id, String nome, String cpf, Conta conta) {
-        this.id = id;
-        this.nome = nome;
-        this.cpf = cpf;
+        this(id, nome, cpf);
         this.conta = conta;
     }
 

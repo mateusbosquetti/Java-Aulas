@@ -20,7 +20,7 @@ public class Main {
         int escolha;
 
         do {
-            System.out.println("Bem vindo ao sistema bancario, você deseja operar em\n1 - Clientes\n2 - Contas\n3 - Sair");
+            System.out.print("Bem vindo ao sistema bancario, você deseja operar em\n1 - Clientes\n2 - Contas\n3 - Sair\nR: ");
             escolha = sc.nextInt();
             sc.nextLine();
 
@@ -72,7 +72,8 @@ public class Main {
         System.out.println("Digite o cpf do cliente: ");
         String cpf = sc.nextLine();
 
-        CRUDCliente.salvar(new Cliente(nome, cpf));
+        Cliente cliente = new Cliente(nome, cpf);
+        CRUDCliente.salvar(cliente);
     }
 
     private static void deletarCliente() {

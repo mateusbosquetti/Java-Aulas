@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00ea1b64-0f95-4b50-be25-0338c6f58175" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_9_0_0.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SistemaBancario/CRUDCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SistemaBancario/CRUDCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SistemaBancario/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SistemaBancario/Cliente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SistemaBancario/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SistemaBancario/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,6 +59,15 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SistemaBancario.Main" />
+      <module name="AulasRomario" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -83,7 +92,7 @@
       <workItem from="1729532983916" duration="6000" />
       <workItem from="1729703284285" duration="250000" />
       <workItem from="1729704326950" duration="8064000" />
-      <workItem from="1729726341465" duration="2036000" />
+      <workItem from="1729726341465" duration="3846000" />
     </task>
     <servers />
   </component>
