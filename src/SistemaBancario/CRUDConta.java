@@ -9,24 +9,24 @@ import java.util.List;
 
 public class CRUDConta {
 
-    public static void salvar(Conta conta) {
-        try (Connection connection = ConexaoBanco.getConnection()) {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO tb_conta (id, numeroConta, id_titular, saldo, limite) " +
-                    "VALUES (?,?,?,?,?)");
+        public static void salvar(Conta conta) {
+            try (Connection connection = ConexaoBanco.getConnection()) {
+                PreparedStatement ps = connection.prepareStatement("INSERT INTO tb_conta (id, numeroConta, id_titular, saldo, limite) " +
+                        "VALUES (?,?,?,?,?)");
 
-            ps.setString(1, String.valueOf(conta.getId()));
-            ps.setInt(2, conta.getNumeroConta());
-            ps.setInt(3, conta.getTitular().getId());
-            ps.setDouble(4, conta.getSaldo());
-            ps.setDouble(5, conta.getLimite());
-            ps.execute();
+                ps.setString(1, String.valueOf(conta.getId()));
+                ps.setInt(2, conta.getNumeroConta());
+                ps.setInt(3, conta.getTitular().getId());
+                ps.setDouble(4, conta.getSaldo());
+                ps.setDouble(5, conta.getLimite());
+                ps.execute();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            System.out.println("Deu Ruim!");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                System.out.println("Deu Ruim!");
+            }
         }
-    }
 
     public static Conta buscar(int numero) {
         try (Connection connection = ConexaoBanco.getConnection()) {

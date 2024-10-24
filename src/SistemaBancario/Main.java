@@ -30,7 +30,6 @@ public class Main {
                     break;
                 case 2:
                     menuConta();
-                    //TODO Implementar
                     break;
                 case 3:
                     System.exit(0);
@@ -80,8 +79,12 @@ public class Main {
 
         System.out.println("Deletar Pelo número");
         System.out.println("Digite o número que você quer deletar: ");
-        CRUDCliente.delete(sc.nextInt());
-
+        int id = sc.nextInt();
+        try {
+            CRUDCliente.delete(CRUDCliente.buscarPorId(id).getId());
+        } catch (Exception e) {
+            System.out.println("ID Inexistente");
+        }
     }
 
     private static List<Cliente> buscarTodosOsClientes() {
