@@ -85,15 +85,15 @@ public class CRUDConta {
         }
     }
 
-    public static void editarConta(Conta conta, double saldo, double limite, int id_titular) {
+    public static void editarConta(Conta conta, double saldo, double limite, int numeroConta) {
 
         try (Connection connection = ConexaoBanco.getConnection()) {
 
             PreparedStatement ps = connection.prepareStatement("update tb_conta set id_titular = ?, limite = ?, saldo = ? where numeroConta = ?");
-            ps.setInt(1, id_titular);
+            ps.setInt(1, conta.getTitular().getId());
             ps.setDouble(2, limite);
             ps.setDouble(3, saldo);
-            ps.setInt(4, conta.getNumeroConta());
+            ps.setInt(4, numeroConta);
             ps.executeUpdate();
 
         } catch (SQLException e) {

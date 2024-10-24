@@ -128,13 +128,13 @@ public class Main {
         if (number == 1) {
             adicionarConta();
         } else if (number == 2) {
-            //interacaoUpdate();
+            editarConta();
         } else if (number == 3) {
-            //interacaoBuscar();
+            System.out.println(buscarContaPeloNumero());
         } else if (number == 4) {
-            //System.out.println(buscarTudo());
+            System.out.println(buscarContas());
         } else if (number == 5) {
-            interacaoDELETE();
+            deletarConta();
         } else {
             System.exit(0);
         }
@@ -159,7 +159,7 @@ public class Main {
     }
 
 
-    private static void interacaoDELETE() {
+    private static void deletarConta() {
         System.out.println("Deletar Pelo número");
         System.out.println("Digite o número que você quer deletar");
         int numeroConta = sc.nextInt();
@@ -167,26 +167,30 @@ public class Main {
 
         CRUDConta.delete(numeroConta);
     }
-    /*
-    private static void interacaoBuscar() {
+
+    private static Conta buscarContaPeloNumero() {
         System.out.println("Buscar Pelo número");
         System.out.println("Digite o número que você quer buscar");
         int numero = sc.nextInt();
-
-        Conta conta = buscar(numero);
-        System.out.println(conta);
+        return CRUDConta.buscar(numero);
     }
 
-    public static void interacaoUpdate() {
+    private static List<Conta> buscarContas() {
+        return CRUDConta.buscarTudo();
+    }
+
+
+    public static void editarConta() {
         System.out.println("\nEDITAR CONTA");
 
-        System.out.print("Número Conta: ");
-        Conta conta = buscar(sc.nextInt());
+        System.out.print("Número Conta que deseja editar: ");
+        int numeroConta = sc.nextInt();
         sc.nextLine();
+        Conta contaEditada = CRUDConta.buscar(numeroConta);
 
-        System.out.println("EDITAR CONTA");
-        System.out.print("Nome: ");
+        System.out.print("Nome do novo titular: ");
         String titularEdi = sc.nextLine();
+        Cliente titular = CRUDCliente.buscarPeloNome(titularEdi);
 
         System.out.print("Saldo: ");
         double saldoEdi = sc.nextDouble();
@@ -194,7 +198,7 @@ public class Main {
         System.out.print("Limite: ");
         double limiteEdi = sc.nextDouble();
 
-        editarConta(titularEdi, saldoEdi, limiteEdi, conta.getNumeroConta());
+        CRUDConta.editarConta(contaEditada, saldoEdi, limiteEdi, titular.getId());
     }
-    */
+
 }
