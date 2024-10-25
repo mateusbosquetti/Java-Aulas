@@ -3,6 +3,7 @@ package SistemaBancario;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class CRUDCliente {
 
@@ -73,6 +74,7 @@ public class CRUDCliente {
                 int id = rs.getInt("id");
                 String nome = rs.getString("nome");
                 String cpf = rs.getString("cpf");
+
                 clientes.add(new Cliente(id, nome, cpf));
             }
 
@@ -91,9 +93,19 @@ public class CRUDCliente {
             PreparedStatement ps = connection.prepareStatement("DELETE FROM tb_cliente where id = ?");
             ps.setInt(1, id);
             ps.execute();
-
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            int escolha;
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Cliente tem conta, deseja excluir a conta primeiro?\n1 - Sim\n2 - Não\nR: ");
+            escolha = sc.nextInt();
+
+            if (escolha == 1){
+                CRUDConta.delete(CRUDConta.buscarPeloTitular(id).getNumeroConta());
+                delete(id);
+                System.out.println("Conta excluída!");
+            } else {
+                System.out.println("Operação cancelada!");
+            }
         }
     }
 

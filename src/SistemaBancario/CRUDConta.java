@@ -9,24 +9,24 @@ import java.util.List;
 
 public class CRUDConta {
 
-        public static void salvar(Conta conta) {
-            try (Connection connection = ConexaoBanco.getConnection()) {
-                PreparedStatement ps = connection.prepareStatement("INSERT INTO tb_conta (id, numeroConta, id_titular, saldo, limite) " +
-                        "VALUES (?,?,?,?,?)");
+    public static void salvar(Conta conta) {
+        try (Connection connection = ConexaoBanco.getConnection()) {
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO tb_conta (id, numeroConta, id_titular, saldo, limite) " +
+                    "VALUES (?,?,?,?,?)");
 
-                ps.setString(1, String.valueOf(conta.getId()));
-                ps.setInt(2, conta.getNumeroConta());
-                ps.setInt(3, conta.getTitular().getId());
-                ps.setDouble(4, conta.getSaldo());
-                ps.setDouble(5, conta.getLimite());
-                ps.execute();
+            ps.setString(1, String.valueOf(conta.getId()));
+            ps.setInt(2, conta.getNumeroConta());
+            ps.setInt(3, conta.getTitular().getId());
+            ps.setDouble(4, conta.getSaldo());
+            ps.setDouble(5, conta.getLimite());
+            ps.execute();
 
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (Exception e) {
-                System.out.println("Deu Ruim!");
-            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Deu Ruim!");
         }
+    }
 
     public static Conta buscar(int numero) {
         try (Connection connection = ConexaoBanco.getConnection()) {
@@ -99,6 +99,27 @@ public class CRUDConta {
         } catch (SQLException e) {
             System.out.println("DEU RUIM O UPDATE!");
         }
+    }
+
+    public static Conta buscarPeloTitular(int idTitular) {
+        try (Connection connection = ConexaoBanco.getConnection()) {
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM tb_conta WHERE id_titular = ?");
+            ps.setInt(1, idTitular);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String id = rs.getString("id");
+                int numeroConta = rs.getInt("numeroConta");
+                double saldo = rs.getDouble("saldo");
+                double limite = rs.getDouble("limite");
+
+                Cliente titular = CRUDCliente.buscarPorId(idTitular);
+                return new Conta(id, numeroConta, titular, saldo, limite);
+            }
+            throw new RuntimeException("A conta não existe");
+        } catch (Exception e) {
+            System.out.println("Deu Ruim!");
+        }
+        throw new RuntimeException("A conta não foi encontrada");
     }
 
 }

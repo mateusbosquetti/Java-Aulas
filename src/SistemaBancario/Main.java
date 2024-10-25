@@ -77,7 +77,7 @@ public class Main {
     private static void deletarCliente() {
 
         System.out.println("Deletar Pelo número");
-        System.out.println("Digite o número que você quer deletar: ");
+        System.out.println("Digite o id que você quer deletar: ");
         int id = sc.nextInt();
         try {
             CRUDCliente.delete(CRUDCliente.buscarPorId(id).getId());
@@ -162,7 +162,7 @@ public class Main {
 
     private static void deletarConta() {
         System.out.println("Deletar Pelo número");
-        System.out.println("Digite o número que você quer deletar");
+        System.out.println("Digite o número da conta que você quer deletar");
         int numeroConta = sc.nextInt();
         sc.nextLine();
 

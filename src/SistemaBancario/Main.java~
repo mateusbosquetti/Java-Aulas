@@ -43,7 +43,7 @@ public class Main {
 
     private static void menuCliente() {
         System.out.println("Bem vindo ao menu dos Clientes, você deseja");
-        System.out.print("1 - Criar\n2 - Editar\n3 - Buscar Por ID\n4 - Buscar Tudo\n5 - Deletar \n6 - Sair\nR: ");
+        System.out.print("1 - Criar\n2 - Editar\n3 - Buscar Por ID\n4 - Buscar Tudo\n5 - Deletar \n6 - Voltar\nR: ");
         int number = sc.nextInt();
         sc.nextLine();
 
@@ -58,7 +58,6 @@ public class Main {
         } else if (number == 5) {
             deletarCliente();
         } else {
-            System.exit(0);
         }
     }
 
@@ -139,7 +138,6 @@ public class Main {
         } else if (number == 5) {
             deletarConta();
         } else {
-            System.exit(0);
         }
     }
 
