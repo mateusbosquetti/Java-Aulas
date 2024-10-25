@@ -93,8 +93,9 @@ public class Main {
     private static Cliente buscarCliente() {
 
         System.out.println("Digite o ID do cliente que deseja buscar: ");
+        int id = sc.nextInt();
         try {
-            return CRUDCliente.buscarPorId(sc.nextInt());
+            return CRUDCliente.buscarPorId(id);
         } catch (Exception e) {
             System.out.println("ID Inexistente");
             return null;
@@ -157,6 +158,7 @@ public class Main {
 
         Conta conta = new Conta(numeroConta, titular, saldo, limite);
         CRUDConta.salvar(conta);
+
     }
 
 

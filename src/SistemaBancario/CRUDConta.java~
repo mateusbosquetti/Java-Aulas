@@ -11,8 +11,17 @@ public class CRUDConta {
 
     public static void salvar(Conta conta) {
 
-        CRUDCliente.buscarPorId(conta.getTitular().getId()).setConta(conta);
-        System.out.println(conta.getTitular().getConta());
+        conta.getTitular().setConta(conta);
+
+        Cliente clienteDaConta = conta.getTitular();
+        System.out.println(clienteDaConta);
+        System.out.println(clienteDaConta.getConta());
+
+        Cliente clienteDaConta2 = CRUDCliente.buscarPorId(6);
+        System.out.println(clienteDaConta.equals(clienteDaConta2));
+        System.out.println(clienteDaConta2.getConta());
+
+
 
         try (Connection connection = ConexaoBanco.getConnection()) {
             PreparedStatement ps = connection.prepareStatement("INSERT INTO tb_conta (id, numeroConta, id_titular, saldo, limite) " +
