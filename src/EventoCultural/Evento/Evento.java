@@ -64,4 +64,15 @@ public class Evento {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    @Override
+    public String toString() {
+        return "Evento{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", local='" + local + '\'' +
+                ", data='" + data + '\'' +
+                ", descricao='" + descricao + '\'' +
+                '}';
+    }
 }
