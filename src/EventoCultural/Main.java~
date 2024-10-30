@@ -83,28 +83,24 @@ public class Main {
         System.out.print("1 - Buscar pelo ID\n2 - Buscar pelo Participante\n3 - Buscar pelo Evento\nR: ");
         int escolha = sc.nextInt();
         sc.nextLine();
-        try {
-            switch (escolha) {
-                case 1:
-                    System.out.print("Id: ");
-                    System.out.println(bancoInscricao.buscarInscricaoPeloId(sc.nextInt()));
-                    sc.nextLine();
-                    break;
-                case 2:
-                    System.out.print("Id do Participante: ");
-                    System.out.println(bancoInscricao.buscarInscricaoPeloParticipante(sc.nextInt()));
-                    sc.nextLine();
-                    break;
-                case 3:
-                    System.out.print("Id do Evento: ");
-                    System.out.println(bancoInscricao.buscarInscricaoPeloEvento(sc.nextInt()));
-                    break;
-                default:
-                    System.out.println("Opção inválida");
-                    break;
-            }
-        } catch (RuntimeException e) {
-            System.out.println("Inscrição não encontrada");
+        switch (escolha) {
+            case 1:
+                System.out.print("Id: ");
+                System.out.println(bancoInscricao.buscarInscricaoPeloId(sc.nextInt()));
+                sc.nextLine();
+                break;
+            case 2:
+                System.out.print("Id do Participante: ");
+                System.out.println(bancoInscricao.buscarInscricaoPeloParticipante(sc.nextInt()));
+                sc.nextLine();
+                break;
+            case 3:
+                System.out.print("Id do Evento: ");
+                System.out.println(bancoInscricao.buscarInscricaoPeloEvento(sc.nextInt()));
+                break;
+            default:
+                System.out.println("Opção inválida");
+                break;
         }
     }
 
@@ -166,23 +162,19 @@ public class Main {
         System.out.print("1 - Buscar pelo Id\n2 - Buscar pelo Email\nR: ");
         int escolha = sc.nextInt();
         sc.nextLine();
-        try {
-            switch (escolha) {
-                case 1:
-                    System.out.print("Id: ");
-                    System.out.println(bancoParticipante.buscarParticipantePorId(sc.nextInt()));
-                    sc.nextLine();
-                    break;
-                case 2:
-                    System.out.print("Email: ");
-                    System.out.println(bancoParticipante.buscarParticipantePorEmail(sc.nextLine()));
-                    break;
-                default:
-                    System.out.println("Opção inválida");
-                    break;
-            }
-        } catch (RuntimeException e) {
-            System.out.println("Participante não encontrado");
+        switch (escolha) {
+            case 1:
+                System.out.print("Id: ");
+                System.out.println(bancoParticipante.buscarParticipantePorId(sc.nextInt()));
+                sc.nextLine();
+                break;
+            case 2:
+                System.out.print("Email: ");
+                System.out.println(bancoParticipante.buscarParticipantePorEmail(sc.nextLine()));
+                break;
+            default:
+                System.out.println("Opção inválida");
+                break;
         }
     }
 
@@ -220,7 +212,6 @@ public class Main {
                 System.out.println("Opção inválida");
                 break;
         }
-
     }
 
     private static void deletarEvento() {

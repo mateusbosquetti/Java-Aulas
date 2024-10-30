@@ -37,6 +37,29 @@ public class BancoInscricao {
         }
     }
 
+    public Inscricao buscarInscricaoPeloId(int id) {
+        try (Connection connection = ConexaoBanco.getConnection()) {
+
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM inscricao where id = ?");
+            ps.setInt(1, id);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()){
+                BancoEvento bancoEvento = new BancoEvento();
+                BancoParticipante bancoParticipante = new BancoParticipante();
+                return new Inscricao(
+                        rs.getInt(1),
+                        bancoParticipante.buscarParticipantePorId(rs.getInt(2)),
+                        bancoEvento.buscarEventoPorId(rs.getInt(3))
+                );
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        throw new RuntimeException("Inscricao não encontrada!");
+    }
+
     public Inscricao buscarInscricaoPeloParticipante(int id) {
         try (Connection connection = ConexaoBanco.getConnection()) {
 
