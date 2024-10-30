@@ -2,6 +2,9 @@ package EventoCultural;
 
 import EventoCultural.Evento.BancoEvento;
 import EventoCultural.Evento.Evento;
+import EventoCultural.Exception.EventoNaoEncontradoException;
+import EventoCultural.Exception.InscricaoNaoEncontradaException;
+import EventoCultural.Exception.ParticipanteNaoEncontradoException;
 import EventoCultural.Inscricao.BancoInscricao;
 import EventoCultural.Inscricao.Inscricao;
 import EventoCultural.Participante.BancoParticipante;
@@ -103,7 +106,7 @@ public class Main {
                     System.out.println("Opção inválida");
                     break;
             }
-        } catch (RuntimeException e) {
+        } catch (InscricaoNaoEncontradaException e) {
             System.out.println("Inscrição não encontrada");
         }
     }
@@ -181,7 +184,7 @@ public class Main {
                     System.out.println("Opção inválida");
                     break;
             }
-        } catch (RuntimeException e) {
+        } catch (ParticipanteNaoEncontradoException e) {
             System.out.println("Participante não encontrado");
         }
     }
@@ -261,7 +264,7 @@ public class Main {
                     System.out.println("Opção inválida");
                     break;
             }
-        } catch (RuntimeException e) {
+        } catch (EventoNaoEncontradoException e) {
             System.out.println("Evento não encontrado");
         }
     }

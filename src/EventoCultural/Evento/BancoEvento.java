@@ -2,6 +2,7 @@ package EventoCultural.Evento;
 
 
 import EventoCultural.ConexaoBanco;
+import EventoCultural.Exception.EventoNaoEncontradoException;
 import EventoCultural.Inscricao.BancoInscricao;
 import EventoCultural.Inscricao.Inscricao;
 
@@ -51,7 +52,7 @@ public class BancoEvento {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        throw new RuntimeException("Evento não encontrado!");
+        throw new EventoNaoEncontradoException("Evento não encontrado!");
     }
 
     public Evento buscarEventoPorId(int id) {
@@ -74,7 +75,7 @@ public class BancoEvento {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        throw new RuntimeException("Evento não encontrado!");
+        throw new EventoNaoEncontradoException("Evento não encontrado!");
     }
 
     public void removerEvento(int id) {

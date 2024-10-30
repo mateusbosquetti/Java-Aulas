@@ -1,6 +1,7 @@
 package EventoCultural.Participante;
 
 import EventoCultural.ConexaoBanco;
+import EventoCultural.Exception.ParticipanteNaoEncontradoException;
 import EventoCultural.Inscricao.BancoInscricao;
 import EventoCultural.Inscricao.Inscricao;
 
@@ -42,7 +43,7 @@ public class BancoParticipante {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        throw new RuntimeException("Usuário não encontrado!");
+        throw new ParticipanteNaoEncontradoException("Participante não encontrado!");
     }
 
     public Participante buscarParticipantePorId(int id) {
@@ -62,7 +63,7 @@ public class BancoParticipante {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        throw new RuntimeException("Usuário não encontrado!");
+        throw new ParticipanteNaoEncontradoException("Participante não encontrado!");
     }
 
 

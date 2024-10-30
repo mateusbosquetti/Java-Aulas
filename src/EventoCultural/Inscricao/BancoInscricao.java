@@ -2,6 +2,7 @@ package EventoCultural.Inscricao;
 
 import EventoCultural.ConexaoBanco;
 import EventoCultural.Evento.BancoEvento;
+import EventoCultural.Exception.InscricaoNaoEncontradaException;
 import EventoCultural.Participante.BancoParticipante;
 
 import java.sql.*;
@@ -59,7 +60,7 @@ public class BancoInscricao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        throw new RuntimeException("Inscricao não encontrada!");
+        throw new InscricaoNaoEncontradaException("Inscricao não encontrada!");
     }
 
     public List<Inscricao> buscarInscricaoPeloParticipante(int id) {
