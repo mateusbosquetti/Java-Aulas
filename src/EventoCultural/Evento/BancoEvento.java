@@ -3,6 +3,7 @@ package EventoCultural.Evento;
 
 import EventoCultural.ConexaoBanco;
 import EventoCultural.Inscricao.BancoInscricao;
+import EventoCultural.Inscricao.Inscricao;
 
 import java.sql.*;
 
@@ -84,7 +85,9 @@ public class BancoEvento {
                 ps.execute();
             } catch (SQLIntegrityConstraintViolationException e) {
                 BancoInscricao bancoInscricao = new BancoInscricao();
-                bancoInscricao.removerInscricao(bancoInscricao.buscarInscricaoPeloEvento(id).getId());
+                for (Inscricao inscricao : bancoInscricao.buscarInscricaoPeloEvento(id)) {
+                    bancoInscricao.removerInscricao(inscricao.getId());
+                }
                 removerEvento(id);
             }
 
