@@ -1,6 +1,7 @@
 package EventoCultural.Participante;
 
 import EventoCultural.ConexaoBanco;
+import EventoCultural.Inscricao.BancoInscricao;
 
 import java.sql.*;
 
@@ -43,14 +44,40 @@ public class BancoParticipante {
         throw new RuntimeException("Usuário não encontrado!");
     }
 
+    public Participante buscarParticipantePorId(int id) {
+        try (Connection connection = ConexaoBanco.getConnection()) {
+
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM participante WHERE id = ?");
+            ps.setInt(1, id);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return new Participante(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3)
+                );
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        throw new RuntimeException("Usuário não encontrado!");
+    }
+
+
     public void removerParticipante(int id) {
 
         try (Connection connection = ConexaoBanco.getConnection()) {
 
-            PreparedStatement ps = connection.prepareStatement("DELETE FROM participante WHERE id = ?");
-            ps.setInt(1, id);
-            ps.execute();
-
+            try {
+                PreparedStatement ps = connection.prepareStatement("DELETE FROM participante WHERE id = ?");
+                ps.setInt(1, id);
+                ps.execute();
+            } catch (SQLIntegrityConstraintViolationException e) {
+                BancoInscricao bancoInscricao = new BancoInscricao();
+                bancoInscricao.removerInscricao(bancoInscricao.buscarInscricaoPeloParticipante(id).getId());
+                removerParticipante(id);
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -2,12 +2,13 @@ package EventoCultural.Evento;
 
 
 import EventoCultural.ConexaoBanco;
+import EventoCultural.Inscricao.BancoInscricao;
 
 import java.sql.*;
 
 public class BancoEvento {
 
-    public void adicionarEvento (Evento evento){
+    public void adicionarEvento(Evento evento) {
 
         try (Connection connection = ConexaoBanco.getConnection()) {
 
@@ -19,7 +20,7 @@ public class BancoEvento {
             ps.execute();
 
             ResultSet rs = ps.getGeneratedKeys();
-            if (rs.next()){
+            if (rs.next()) {
                 evento.setId(rs.getInt(1));
             }
 
@@ -29,14 +30,14 @@ public class BancoEvento {
 
     }
 
-    public Evento buscarEventoPorNome(String nome){
+    public Evento buscarEventoPorNome(String nome) {
         try (Connection connection = ConexaoBanco.getConnection()) {
 
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM evento WHERE nome = ?");
             ps.setString(1, nome);
 
             ResultSet rs = ps.executeQuery();
-            if (rs.next()){
+            if (rs.next()) {
                 return new Evento(
                         rs.getInt(1),
                         rs.getString(2),
@@ -52,12 +53,40 @@ public class BancoEvento {
         throw new RuntimeException("Evento não encontrado!");
     }
 
-    public void removerEvento(int id){
+    public Evento buscarEventoPorId(int id) {
         try (Connection connection = ConexaoBanco.getConnection()) {
 
-            PreparedStatement ps = connection.prepareStatement("DELETE FROM evento WHERE id = ?");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM evento WHERE id = ?");
             ps.setInt(1, id);
-            ps.execute();
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return new Evento(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5)
+                );
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        throw new RuntimeException("Evento não encontrado!");
+    }
+
+    public void removerEvento(int id) {
+        try (Connection connection = ConexaoBanco.getConnection()) {
+            try {
+                PreparedStatement ps = connection.prepareStatement("DELETE FROM evento WHERE id = ?");
+                ps.setInt(1, id);
+                ps.execute();
+            } catch (SQLIntegrityConstraintViolationException e) {
+                BancoInscricao bancoInscricao = new BancoInscricao();
+                bancoInscricao.removerInscricao(bancoInscricao.buscarInscricaoPeloEvento(id).getId());
+                removerEvento(id);
+            }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -26,6 +26,7 @@ public class Main {
         Inscricao inscricaoCriada = new Inscricao(participanteCriado, eventoCriado);
         bancoInscricao.inscreverParticipante(inscricaoCriada);
 
+        bancoEvento.removerEvento(eventoCriado.getId());
 
     }
 }
